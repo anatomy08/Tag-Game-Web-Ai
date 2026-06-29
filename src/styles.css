@@ -1,0 +1,152 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #1a1a2e;
+  font-family: system-ui, -apple-system, sans-serif;
+  touch-action: none;
+  user-select: none;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+#hud {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 16px;
+  background: #16213e;
+  color: #eee;
+  font-size: 1rem;
+  font-weight: 600;
+  flex-shrink: 0;
+  z-index: 10;
+}
+
+#score,
+#timer {
+  display: none;
+}
+
+#status {
+  color: #4ecca3;
+  text-align: center;
+  flex: 1;
+}
+
+#status.it {
+  color: #e94560;
+}
+
+#status.run {
+  color: #ffd369;
+}
+
+#game-canvas {
+  flex: 1;
+  width: 100%;
+  display: block;
+  touch-action: none;
+  cursor: crosshair;
+}
+
+#game-canvas.shake {
+  animation: tag-shake 0.28s ease-out;
+}
+
+@keyframes tag-shake {
+  0%, 100% { transform: translate(0, 0); }
+  18% { transform: translate(-7px, 4px); }
+  36% { transform: translate(6px, -5px); }
+  54% { transform: translate(-4px, -3px); }
+  72% { transform: translate(4px, 3px); }
+}
+
+#overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(26, 26, 46, 0.92);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  transition: opacity 0.3s;
+}
+
+#overlay.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+#overlay.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+#overlay-content {
+  text-align: center;
+  color: #eee;
+  padding: 2rem;
+  max-width: 400px;
+}
+
+#overlay-content h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: #4ecca3;
+}
+
+#overlay-content p {
+  margin-bottom: 2rem;
+  line-height: 1.5;
+  color: #aaa;
+}
+
+#start-btn {
+  background: #4ecca3;
+  color: #1a1a2e;
+  border: none;
+  padding: 14px 32px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+#start-btn:hover {
+  background: #3db892;
+}
+
+#flash {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 3rem;
+  font-weight: 900;
+  color: #e94560;
+  text-shadow: 0 0 20px rgba(233, 69, 96, 0.8);
+  z-index: 50;
+  pointer-events: none;
+  transition: opacity 0.2s;
+}
+
+#flash.visible {
+  opacity: 1;
+}
+
+#flash.hidden {
+  opacity: 0;
+}
